@@ -4,8 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,47 +26,105 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private ImageAdapter adapter;
+    Context context;
+    private AdView adView;
     private DatabaseReference databaseReference;
+
+    ChipGroup chipGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView= findViewById(R.id.img_rec);
 
-        List<ImageItem> imageList = new ArrayList<>();
-
-        adapter = new ImageAdapter(this, imageList, item -> {
-            // Handle item click here, e.g., open a new activity to display the full image.
-            // You can pass the clicked item's data (e.g., image URL) to the new activity.
-        });
-
-        recyclerView.setAdapter(adapter);
-
-        // Initialize Firebase and set up a database reference
-        FirebaseApp.initializeApp(this);
-        databaseReference = FirebaseDatabase.getInstance().getReference("wallpapers/images");
-
-        // Add a ValueEventListener to fetch data from Firebase and update the RecyclerView
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                imageList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    ImageItem imageItem = snapshot.getValue(ImageItem.class);
-                    if (imageItem != null) {
-                        imageList.add(imageItem);
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-
-        });
-
+//        MobileAds.initialize(this, initializationStatus -> {
+//            // Initialization completed. You can now load ads.
+//        });
+//        adView = findViewById(R.id.adView);
+//
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        adView.loadAd(adRequest);
+//
+//        recyclerView= findViewById(R.id.img_rec);
+//        recyclerView.setAdapter(adapter);
+//        chipGroup = findViewById(R.id.chipGroup);
+//        databaseReference = FirebaseDatabase.getInstance().getReference("wallpapers/categories/");
+//
+//
+//
+//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    String key = snapshot.getKey();
+//
+//                    Chip chip = new Chip(MainActivity.this);
+//                    chip.setText(key);
+//                    chip.setClickable(true);
+//                    chip.setCheckable(true);
+//                    chipGroup.addView(chip);
+//
+//                    // Set an OnClickListener for the chip to handle chip selection
+//                    chip.setOnClickListener(v -> {
+//
+//                        String selectedKey = chip.getText().toString();
+//                        updateRecyclerView(selectedKey);
+//                    });
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // Handle error
+//            }
+//        });
+//    }
+//    private void updateRecyclerView(String selectedKey) {
+//        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("wallpapers/category/");
+//
+//        databaseReference.orderByChild("category").equalTo(selectedKey).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // Parse dataSnapshot to create/update your data list
+//                // For example, if you have a list of items, update it here
+//                List<ImageItem> filteredData = new ArrayList<>();
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    ImageItem item = snapshot.getValue(ImageItem.class);
+//                    filteredData.add(item);
+//                }
+//
+//                // Update your RecyclerView adapter with the filtered data
+//                adapter.setData(filteredData);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // Handle error
+//            }
+//        });
     }
-}
+
+        @Override
+        protected void onPause() {
+            if (adView != null) {
+                adView.pause();
+            }
+            super.onPause();
+        }
+
+        @Override
+        protected void onResume() {
+            super.onResume();
+            if (adView != null) {
+                adView.resume();
+            }
+        }
+
+        @Override
+        protected void onDestroy() {
+            if (adView != null) {
+                adView.destroy();
+            }
+            super.onDestroy();
+        }
+    }
+

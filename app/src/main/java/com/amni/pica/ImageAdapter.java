@@ -43,6 +43,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         return new ViewHolder(itemView);
     }
 
+    public void setData(List<ImageItem> newData) {
+        imageList = newData;
+        notifyDataSetChanged();
+    }
     @Override
     public void onBindViewHolder(@NonNull ImageAdapter.ViewHolder holder, int position) {
 
