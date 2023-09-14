@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "608324017972",
+    "firebase_url": "https://project-adsense-26c65-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "project-adsense-26c65",
+    "storage_bucket": "project-adsense-26c65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608324017972:android:8d48c7a2f1db2ab1bacf61",
+        "android_client_info": {
+          "package_name": "com.amni.pica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608324017972-0m6a200mf4ndjc7tvfdd73taer9av6um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5IquFhxw2fr2UIX_dq85nWpq0uhdSQOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608324017972-0m6a200mf4ndjc7tvfdd73taer9av6um.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608324017972:android:e946a85f9863c0bebacf61",
+        "android_client_info": {
+          "package_name": "com.nilesh.educora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608324017972-0m6a200mf4ndjc7tvfdd73taer9av6um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5IquFhxw2fr2UIX_dq85nWpq0uhdSQOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608324017972-0m6a200mf4ndjc7tvfdd73taer9av6um.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608324017972:android:e2b43aebb6489819bacf61",
+        "android_client_info": {
+          "package_name": "com.praani.augmented"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608324017972-0m6a200mf4ndjc7tvfdd73taer9av6um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5IquFhxw2fr2UIX_dq85nWpq0uhdSQOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608324017972-0m6a200mf4ndjc7tvfdd73taer9av6um.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
